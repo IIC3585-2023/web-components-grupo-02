@@ -58,7 +58,7 @@ export class MyElement extends LitElement {
     return css`
     *{
       margin: 0;
-      padding: 0;
+      padding: 1;
   }
   .rate {
       float: left;
