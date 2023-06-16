@@ -12,13 +12,26 @@ export class MyElement extends LitElement {
   static get properties() {
     return {
       stars: { type: Number },
+      fullPrice: { type: Number },
+      discountPrice: { type: Number },
+      discount: { type: Number },
     }
   }
 
+
   constructor() {
     super()
-    this.stars = 0
+    this.stars = 0;
+    this.fullPrice = 0;
+    this.discountPrice = 0;
+    this.discount = 0;
 
+  }
+
+  updated(changedProperties) {
+    if (changedProperties.has('fullPrice') || changedProperties.has('discountPrice')) {
+      this.discount = this.fullPrice / this.discountPrice;
+    }
   }
 
   setStar(star) {
@@ -36,6 +49,7 @@ export class MyElement extends LitElement {
     </head>
     
     <body>
+    <slot></slot>
       <div class="rate">
         <input type="radio" id="star5" name="rate" value="5" @click="${() => this.setStar(5)}"/>
         <label for="star5" title="text">5 stars</label>
@@ -48,6 +62,11 @@ export class MyElement extends LitElement {
         <input type="radio" id="star1" name="rate" value="1" @click="${() => this.setStar(1)}"/>
         <label for="star1" title="text">1 star</label>
       </div>
+      <div>
+        <p>Full price: ${this.fullPrice}</p>
+        <p>Discount price: ${this.discountPrice}</p>
+        <p>Discount: ${this.discount}</p>
+      </div>
     </body>
     
     </html>
@@ -58,7 +77,7 @@ export class MyElement extends LitElement {
     return css`
     *{
       margin: 0;
-      padding: 1;
+      padding: 0;
   }
   .rate {
       float: left;
