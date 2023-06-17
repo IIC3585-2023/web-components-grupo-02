@@ -30,7 +30,7 @@ export class MyElement extends LitElement {
 
   updated(changedProperties) {
     if (changedProperties.has('fullPrice') || changedProperties.has('discountPrice')) {
-      this.discount = this.fullPrice / this.discountPrice;
+      this.discount = this.discountPrice/this.fullPrice ;
     }
   }
 
@@ -62,10 +62,11 @@ export class MyElement extends LitElement {
         <input type="radio" id="star1" name="rate" value="1" @click="${() => this.setStar(1)}"/>
         <label for="star1" title="text">1 star</label>
       </div>
-      <div>
+      <br>
+      <div class = "price">
         <p>Full price: ${this.fullPrice}</p>
         <p>Discount price: ${this.discountPrice}</p>
-        <p>Discount: ${this.discount}</p>
+        <p>Discount: ${this.discount * 100}%</p>
       </div>
     </body>
     
@@ -81,9 +82,15 @@ export class MyElement extends LitElement {
   }
   .rate {
       float: left;
-      height: 46px;
+      height: 2rem;
       padding: 0 10px;
+      margin: 2rem;
   }
+  .price {
+    float: left;
+    padding: 0 10px;
+    background-color: lightblue;
+}
   .rate:not(:checked) > input {
       position:absolute;
       top:-9999px;
