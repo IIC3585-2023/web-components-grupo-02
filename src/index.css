@@ -25,6 +25,7 @@ body {
   justify-content: flex-start;
 }
 
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
