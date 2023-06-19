@@ -34,4 +34,32 @@ export const products = [
       discountPrice: 39990,
       stars: 2,
     },
+    {
+      name: 'Valve Steam Deck 64 GB',
+      price: 710590,
+      image: 'https://media.solotodo.com/media/products/1701980_picture_1674025113.webp',
+      discountPrice: 509990,
+      stars: 5,
+    },
+    {
+      name: 'ASUS TUF Gaming A15 FA506ICB-HN106W',
+      price: 699990,
+      image: 'https://media.solotodo.com/media/products/1635104_picture_1660838908.jpg',
+      discountPrice: 463205,
+      stars: 3,
+    },
+    {
+      name: 'MSI GeForce RTX 3060 Ventus 2X 8G OC',
+      price: 312450,
+      image: 'https://media.solotodo.com/media/products/1710260_picture_1674900627.jpg',
+      discountPrice: 296828,
+      stars: 4,
+    },
+    {
+      name: 'LG UltraGear 24GN60R-B',
+      price: 184885,
+      image: 'https://media.solotodo.com/media/products/1656260_picture_1666538304.jpg',
+      discountPrice: 181990,
+      stars: 2,
+    },
   ]

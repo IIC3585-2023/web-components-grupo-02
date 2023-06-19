@@ -42,7 +42,7 @@ export class MyElement extends LitElement {
     <body>
     <div class="container">
       <div class = "price">
-        <p>Discount: ${Math.floor(this.discount * 100)}%</p>
+        <p>${Math.floor(this.discount * 100)}% OFF</p>
       </div>
       <br>
      <slot></slot>
@@ -79,13 +79,12 @@ export class MyElement extends LitElement {
       justify-content: center;
       background-color: white;
       padding: 2rem;
-      margin: 2rem;
       border: 1px solid black;
       border-radius: 10px;
       flex-wrap: wrap;
-      align-content: center;
       color: black;
       width: 20rem;
+      height: 45rem;
   }
   .rate {
       height: 2rem;
@@ -101,7 +100,7 @@ export class MyElement extends LitElement {
 }
   .rate:not(:checked) > input {
       position:absolute;
-      top:-9999px;
+      left:-9999px;
   }
   .rate:not(:checked) > label {
       float:right;
