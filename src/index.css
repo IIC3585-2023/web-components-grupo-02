@@ -25,6 +25,14 @@ body {
   justify-content: flex-start;
 }
 
+#product-div{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
