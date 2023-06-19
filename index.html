@@ -4,12 +4,80 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Lit</title>
+    <title>Vite + Web</title>
     <link rel="stylesheet" href="./src/index.css" />
     <script type="module" src="/src/my-element.js"></script>
+    <script type="module" src="/src/web-component.js"></script>
     <script type="module" src="index.js"></script>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
   </head>
   <body>
+    <div class="container">
+      
+      <div>
+        <h1>Lit Component</h1>
+        <my-element>
+        </my-element>
+      </div>
+
+      <br>
+
+      <div>
+        <h1>Web Component</h1>
+        <tree-item>
+          Motores de Bases de Datos
+          <tree-item>
+            Relacionales
+            <tree-item>
+              Open Source
+              <tree-item>
+                MySQL 
+              </tree-item>
+              <tree-item>
+                PostgreSQL 
+              </tree-item>
+            </tree-item>
+            <tree-item>
+              Propietarios
+              <tree-item>
+                Oracle
+              </tree-item>
+              <tree-item>
+                SQL Server
+              </tree-item>
+            </tree-item>
+          </tree-item>
+          <tree-item>
+            NoSQL
+            <tree-item>
+              Modelo Documentos
+              <tree-item>
+                MongoDB
+              </tree-item>
+              <tree-item>
+                CouchDB
+              </tree-item>
+            </tree-item>
+            <tree-item>
+              Modelo Grafos
+              <tree-item>
+                Neo4J
+              </tree-item>
+              <tree-item>
+                SparQL
+              </tree-item>
+            </tree-item>
+          </tree-item>
+        </tree-item>
+      </div>
+
+    </div>
+    
     <div id="product-div" class="d-flex flex-wrap align-content-center justify-content-center gap-3 mb-5"></div>
   </body>
 </html>
