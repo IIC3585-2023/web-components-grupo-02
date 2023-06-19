@@ -84,7 +84,7 @@ export class MyElement extends LitElement {
       flex-wrap: wrap;
       color: black;
       width: 20rem;
-      height: 45rem;
+      height: 50rem;
   }
   .rate {
       height: 2rem;
