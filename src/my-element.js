@@ -1,18 +1,10 @@
 import { LitElement, css, html } from 'lit'
-import star from './assets/estrella.png'
-import fullStar from './assets/estrella_llena.png'
 
-/**
- * An example element.
- *
- * @slot - This element has a slot
- * @csspart button - The button
- */
 export class MyElement extends LitElement {
   static get properties() {
     return {
       stars: { type: Number },
-      fullPrice: { type: Number },
+      price: { type: Number },
       discountPrice: { type: Number },
       discount: { type: Number },
     }
@@ -22,22 +14,21 @@ export class MyElement extends LitElement {
   constructor() {
     super()
     this.stars = 0;
-    this.fullPrice = 0;
+    this.price = 0;
     this.discountPrice = 0;
     this.discount = 0;
-
   }
 
   updated(changedProperties) {
-    if (changedProperties.has('fullPrice') || changedProperties.has('discountPrice')) {
-      this.discount = this.discountPrice/this.fullPrice ;
+    if (changedProperties.has('price') || changedProperties.has('discountPrice')) {
+      this.discount = (this.price-this.discountPrice)/this.price;
     }
   }
 
   setStar(star) {
-    this.stars = star;
-    console.log(this.stars);
+    this.stars = Math.floor((this.stars + star)/2);
   }
+
 
   render() {
     return html`
@@ -45,31 +36,31 @@ export class MyElement extends LitElement {
 
     <head>
       <meta charset="UTF-8">
-      <title>Star rating using pure CSS</title>
+      <title>Elementos with</title>
     </head>
     
     <body>
-    <slot></slot>
-      <div class="rate">
-        <input type="radio" id="star5" name="rate" value="5" @click="${() => this.setStar(5)}"/>
-        <label for="star5" title="text">5 stars</label>
-        <input  type="radio"id="star4" name="rate" value="4" @click="${() => this.setStar(4)}"/>
-        <label for="star4" title="text">4 stars</label>
-        <input type="radio" id="star3" name="rate" value="3" @click="${() => this.setStar(3)}"/>
-        <label for="star3" title="text">3 stars</label>
-        <input type="radio" id="star2" name="rate" value="2" @click="${() => this.setStar(2)}"/>
-        <label for="star2" title="text">2 stars</label>
-        <input type="radio" id="star1" name="rate" value="1" @click="${() => this.setStar(1)}"/>
-        <label for="star1" title="text">1 star</label>
+    <div class="container">
+      <div class = "price">
+        <p>Discount: ${Math.floor(this.discount * 100)}%</p>
       </div>
       <br>
-      <div class = "price">
-        <p>Full price: ${this.fullPrice}</p>
-        <p>Discount price: ${this.discountPrice}</p>
-        <p>Discount: ${this.discount * 100}%</p>
+     <slot></slot>
+        <div class="rate">
+        <input type="radio" id="star5" name="rate" value="5" @click="${() => this.setStar(5)}" ?checked="${this.stars === 5}"/>
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" @click="${() => this.setStar(4)}" ?checked="${this.stars === 4}"/>
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" @click="${() => this.setStar(3)}" ?checked="${this.stars === 3}"/>
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" @click="${() => this.setStar(2)}" ?checked="${this.stars === 2}"/>
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" @click="${() => this.setStar(1)}" ?checked="${this.stars === 1}"/>
+        <label for="star1" title="text">1 star</label>
       </div>
+      
     </body>
-    
+    </div>
     </html>
     `
   }
@@ -79,17 +70,34 @@ export class MyElement extends LitElement {
     *{
       margin: 0;
       padding: 0;
+      
+  }
+  .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      padding: 2rem;
+      margin: 2rem;
+      border: 1px solid black;
+      border-radius: 10px;
+      flex-wrap: wrap;
+      align-content: center;
+      color: black;
+      width: 20rem;
   }
   .rate {
-      float: left;
       height: 2rem;
       padding: 0 10px;
       margin: 2rem;
   }
   .price {
-    float: left;
+    height: 2rem;
     padding: 0 10px;
-    background-color: lightblue;
+    background-color: lightgreen;
+    justify-content: center;
+    color: black;
 }
   .rate:not(:checked) > input {
       position:absolute;
